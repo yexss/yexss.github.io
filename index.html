@@ -263,7 +263,7 @@
                                                         </div>
                                                         <div class="mint-cell-value mt-color-grey-lv3"
                                                             style="flex: 1 1 calc(100% - 96px); justify-content: normal;">
-                                                            <div class="em-select-value mt-color-grey-lv3">18552265758
+                                                            <div class="em-select-value mt-color-grey-lv3">{{ students[index].phone }}
                                                             </div>
                                                         </div>
                                                         <!---->
@@ -415,7 +415,14 @@
                                                         <div class="mint-cell-value mt-color-grey-lv3"
                                                             style="flex: 1 1 calc(100% - 96px); justify-content: normal;">
                                                             <div style="color: #000;">
-                                                                筠竹苑1栋114
+                                                                筠竹苑1栋
+                                                                <span v-if="index!=4">
+                                                                114
+                                                                </span>
+                                                                <span v-else>
+                                                                302
+                                                                </span>
+
                                                             </div>
                                                         </div>
                                                         <!---->
@@ -507,7 +514,7 @@
                                                             style="flex: 1 1 calc(100% - 96px); justify-content: normal;">
                                                             <div class="em-select-value mt-color-grey-lv3">
                                                                 {{ currentTime }}
-                                                                09:00 至 {{ currentTime }} 17:04</div>
+                                                                09:00 至 {{ applyTime }} 19:00</div>
                                                         </div>
                                                         <!---->
                                                     </div>
@@ -805,7 +812,7 @@
                                                         </div>
                                                         <div class="mint-cell-value mt-color-grey-lv3"
                                                             style="flex: 1 1 calc(100% - 96px); justify-content: normal;">
-                                                            <div class="em-select-value mt-color-grey-lv3">18552265758
+                                                            <div class="em-select-value mt-color-grey-lv3">{{ students[index].phone }}
                                                             </div>
                                                         </div>
                                                         <!---->
@@ -1034,8 +1041,8 @@
                                                         <div class="mint-cell-value mt-color-grey-lv3"
                                                             style="flex: 1 1 calc(100% - 96px); justify-content: normal;">
                                                             <div class="em-select-value mt-color-grey-lv3">
-                                                                {{ currentTime }}
-                                                                17:04</div>
+                                                                {{ applyTime }}
+                                                                19:00</div>
                                                         </div>
                                                         <!---->
                                                     </div>
@@ -1061,8 +1068,8 @@
                                                         <div class="mint-cell-value mt-color-grey-lv3"
                                                             style="flex: 1 1 calc(100% - 96px); justify-content: normal;">
                                                             <div class="em-select-value mt-color-grey-lv3">
-                                                                {{ applyTime }}
-                                                                11:04:18</div>
+                                                                {{ sfTime }} {{ minsec() }}
+                                                            </div>
                                                         </div>
                                                         <!---->
                                                     </div>
@@ -1097,7 +1104,7 @@
                                         </div>
                                         <div class="mint-step__time mt-color-grey-lv4">
                                             <div class="mint-text bh-color-gray-4 OCjaunojrmr mt-color-default">
-                                                {{ applyTime }}</div>
+                                                {{ sfTime }}</div>
                                         </div>
                                         <div class="mint-step__title">
                                             提交申请
@@ -1115,7 +1122,7 @@
                                         <div class="mint-step__time mt-color-grey-lv4">
                                             <div class="mint-text bh-color-gray-4 OCjaunojrmr mt-color-default"></div>
                                             <div class="mint-text bh-color-gray-4 OCjaunojrmr mt-color-default">
-                                                {{ applyTime }} 13:09:40</div>
+                                                {{ sfTime }} 19:09:40</div>
                                         </div>
                                         <div class="mint-step__title">
                                             班主任审核
@@ -1140,11 +1147,22 @@
                                         <div class="mint-step__time mt-color-grey-lv4">
                                             <div class="mint-text bh-color-gray-4 OCjaunojrmr mt-color-default"></div>
                                             <div class="mint-text bh-color-gray-4 OCjaunojrmr mt-color-default">
-                                                {{ applyTime }} 13:15:44</div>
+                                                2022-09-26 {{ minsec() }}</div>
                                         </div>
 
 
-                                        <!-- <i class="mint-icon mint-icon-checked iconfont icon-wancheng mt-color-primary"
+
+
+
+
+
+
+
+
+
+
+
+                                        <i class="mint-icon mint-icon-checked iconfont icon-wancheng mt-color-primary"
                                             style="z-index: 1;"></i>
                                         <div class="mint-step__title">
                                             辅导员审核
@@ -1165,7 +1183,7 @@
                                         <div class="mint-step__time mt-color-grey-lv4">
                                             <div class="mint-text bh-color-gray-4 OCjaunojrmr mt-color-default"></div>
                                             <div class="mint-text bh-color-gray-4 OCjaunojrmr mt-color-default">
-                                                {{ currentTime }} 13:20:31</div>
+                                                {{ currentTime }} {{ minsec() }}</div>
                                         </div>
                                         <div class="mint-step__line mt-bg-grey-lv6"></div>
                                         <i class="mint-icon mint-icon-checked iconfont icon-wancheng mt-color-primary"
@@ -1185,7 +1203,17 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="mint-step__line mt-bg-grey-lv6"></div> -->
+                                        <div class="mint-step__line mt-bg-grey-lv6"></div>
+
+
+
+
+
+
+
+
+
+
                                     </div>
                                     <div class="mint-step bh-color-gray-3 mint-step--vertical mint-step--finish mt-color-grey-lv4"
                                         text="结束">
@@ -1231,19 +1259,28 @@
             data: {
                 students: [{
                     id: "210501110116",
-                    name: "严晓桐"
+                    name: "严晓桐",
+                    phone: "17715233870"
                 }, {
                     id: "210501110117",
-                    name: "何新宇"
+                    name: "何新宇",
+                    phone: "18951723364"
                 },{
                     id: "210501110133",
-                    name: "高维祎"
+                    name: "高维祎",
+                    phone: "13951978592"
                 },{
                     id:"210501110108",
-                    name:"王浩"
+                    name:"王浩",
+                    phone:"17761739289"
                 },{
                     id:"210501110130",
-                    name:"徐浩然"
+                    name:"徐浩然",
+                    phone:"18761688810"
+                },{
+                    id:"210501110140",
+                    name:"赖文骁",
+                    phone:"13951978962"
                 }],
                 index: localStorage.getItem("index") || 0,
                 year: new Date().getFullYear(),
@@ -1266,9 +1303,34 @@
                         reason: '修电脑'
                     },
                     {
-                        address: '乌克兰/基辅',
-                        detail: '基辅',
-                        reason: '支援俄罗斯'
+                        address: '江苏省/南京市/秦淮区',
+                        detail: '苜蓿园大街',
+                        reason: '回家过节'
+                    },
+                    {
+                        address: '江苏省/南京市/秦淮区',
+                        detail: '苜蓿园大街大邦花园4栋401室',
+                        reason: '医院牙科手术'
+                    },
+                    {
+                        address: '江苏省/南京市/雨花台区',
+                        detail: '长盛东苑小区',
+                        reason: '回家过节'
+                    },
+                    {
+                        address: '江苏省/南京市/秦淮区',
+                        detail: '西桐桥',
+                        reason: '回家照顾爷爷'
+                    },
+                    {
+                        address: '江苏省/南京市/建邺区',
+                        detail: '云锦路',
+                        reason: '皮肤病复查'
+                    },
+                    {
+                        address: '江苏省/南京市/雨花台区',
+                        detail: '乐业东苑',
+                        reason: '回家拿衣服'
                     },
                 ],
                 d_index: localStorage.getItem("d_index") || 0
@@ -1284,13 +1346,24 @@
                     this.d_index %= this.collection.length;
                     localStorage.setItem("d_index", this.d_index);
                 },
+                randomNum:function(max,min){
+                    return Math.floor(Math.random()*(max-min+1)+min);
+                },
+                minsec:function(){
+                    return this.randomNum(17,10)+":"+this.randomNum(55,10)+":"+this.randomNum(55,10);
+                }
             },
             computed: {
                 currentTime() {
-                    return this.year + "-0" + this.month + "-" + this.day
+                    return "2022-09-"+this.randomNum(28,27)
+                    // return this.year + "-0" + this.month + "-" + this.day
+                },
+                sfTime(){
+                    return "2022-09-"+this.randomNum(25,24)
                 },
                 applyTime(){
-                    return this.year + "-0" + this.month + "-" + (this.day - 1)
+                    return "2022-10-03"
+                    // return this.year + "-0" + this.month + "-" + (this.day - 1)
                 }
             }
         })
